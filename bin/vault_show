@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+
+use Azedan\Vault\Commands\VaultCommandShow;
+
+$cwd = isset($_SERVER['PWD']) && is_dir($_SERVER['PWD']) ? $_SERVER['PWD'] : getcwd();
+
+// Set up autoloader
+$loader = false;
+if (file_exists($autoloadFile = $cwd . '/vendor/autoload.php')
+  || file_exists($autoloadFile = $cwd . '/autoload.php')
+  || file_exists($autoloadFile = $cwd . '/web/autoload.php')
+) {
+  $loader = include_once($autoloadFile);
+} else {
+  throw new \Exception("Could not locate autoload.php. cwd is $cwd; __DIR__ is " . __DIR__);
+}
+
+$args = $_SERVER['argv'];
+
+$command = new VaultCommandShow($cwd, $args);
+$command->execute();
+

@@ -1,0 +1,21 @@
+{
+    "name": "azedan/vault",
+    "description": "Utilities to manage hashicorp vault protected env file",
+    "require": {
+        "php": ">=7.2",
+        "psecio/secure_dotenv": "^0.4.0",
+        "symfony/dotenv": "^5.2",
+        "violuke/vault-php-sdk": "^1.0",
+        "league/climate": "^3.4"
+    },
+    "autoload":{
+        "psr-4":{
+            "Azedan\\Vault\\":"src/"
+        }
+    },
+    "bin": [
+        "bin/vault_add",
+        "bin/vault_get_key",
+        "bin/vault_show"
+    ]
+}
